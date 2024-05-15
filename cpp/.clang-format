@@ -1,0 +1,13 @@
+BasedOnStyle: Google
+IndentWidth: 2
+UseTab: Never
+TabWidth: 2
+AccessModifierOffset: -2
+ConstructorInitializerIndentWidth: 2
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: All
+ColumnLimit: 100
+PointerBindsToType: false
+SpacesBeforeTrailingComments: 1
+SpaceBeforeParens: ControlStatements

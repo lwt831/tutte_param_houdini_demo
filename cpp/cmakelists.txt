@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.12)
+set(CMAKE_CXX_STANDARD 17)
+project(tutte_cpp)
+
+# set vcpkg path
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/lwt83/Downloads/vcpkg-master/vcpkg-master/scripts/buildsystems/vcpkg.cmake")
+
+# Find pybind11
+set(PYTHON_EXECUTABLE "C:/Program Files/Side Effects Software/Houdini 19.5.435/python39/python.exe")
+find_package(pybind11 REQUIRED)
+
+# add houdini python path
+set(HOUDINI_PATH "C:/Program Files/Side Effects Software/Houdini 19.5.435/python39")
+
+include_directories(${HOUDINI_PATH}/include)
+
+file(GLOB PYTHON_LIBS ${HOUDINI_PATH}/libs/*.lib)
+
+# Get all .cpp files in src directory
+file(GLOB SOURCES "src/*.cpp")
+
+# Add pybind11 module
+pybind11_add_module(tutte_cpp MODULE ${SOURCES})
+
+target_link_libraries(tutte_cpp PRIVATE ${PYTHON_LIBS})
+
+if(WIN32)
+    set_target_properties(tutte_cpp PROPERTIES SUFFIX ".pyd")
+endif()
