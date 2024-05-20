@@ -5,6 +5,7 @@ from importlib import reload
 import laplacian_matrix
 import find_boundary_loop
 import tutte_cpp
+from profile_tool import Profile
 
 reload(laplacian_matrix)
 reload(find_boundary_loop)
@@ -14,6 +15,7 @@ from scipy.sparse import eye
 from scipy.sparse.linalg import spsolve
 
 
+@Profile(follow=[])
 def Parameterization(geo, use_cpp):
     # nf = utils.GetNumberOfFaces(geo)
     npts = utils.GetNumberOfPoints(geo)
